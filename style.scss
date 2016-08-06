@@ -21,7 +21,7 @@ body {
 	background: $white;
   font: 18px/1.4 $helvetica;
   color: $darkGray;
-  font-size: 18px;
+
 }
 
 .container {
@@ -102,6 +102,7 @@ ul ul, ol ul {
 
 em, i {
   font-style: italic;
+    font-size: 18px;
 }
 
 strong, b {
