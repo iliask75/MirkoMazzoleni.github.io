@@ -25,7 +25,7 @@ library(tidyr)
 battles <- read.csv("data/battles.csv", header=TRUE, stringsAsFactors=TRUE)
 ```
 
-We first take an overview of the dataset at hand by checking the variables at our disposal. We can see 38 observations for each of the 25 variables. The next step will be to gain confidence with the features and the values they can take.
+We first take an overview of the dataset at hand by checking the variables at our disposal. We can see $$38$$ observations for each of the $$25$$ variables. The next step will be to gain confidence with the features and the values they can take.
 
 ```r
 str(battles)
