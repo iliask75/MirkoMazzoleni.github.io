@@ -766,8 +766,8 @@ By counting the in-degree (number of battles won) and the total degee of a node 
 $p(win)=\frac{n+1}{n+m+2}$
 where $n$ is the number of won battles, $m$ is the number of lost battles and $p(win)$ is the probability to win a battle.
 
-
-![qqq]({{ site.url }}/assets/games_of_tufte/unnamed-chunk-53-1.svg)
+![_config.yml]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-53-1.svg)
+!
 
 ### Most powerful houses
 
