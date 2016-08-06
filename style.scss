@@ -67,7 +67,6 @@ h4 {
 
 p {
   margin: 15px 0;
-  font-size: 15px;
 }
 
 a {
@@ -90,7 +89,7 @@ ul {
 
 ol {
   list-style-type: decimal;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 ol ul, ul ol, ul ul, ol ol {
@@ -247,13 +246,13 @@ nav {
 .posts > .post {
   padding-bottom: 2em;
   border-bottom: 1px solid $lightGray;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 .posts > .post:last-child {
   padding-bottom: 1em;
   border-bottom: none;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 .post {
