@@ -94,6 +94,7 @@ ol {
 
 ol ul, ul ol, ul ul, ol ol {
   margin: 0;
+   font-size: 18px;
 }
 
 ul ul, ol ul {
@@ -247,13 +248,13 @@ nav {
 .posts > .post {
   padding-bottom: 2em;
   border-bottom: 1px solid $lightGray;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .posts > .post:last-child {
   padding-bottom: 1em;
   border-bottom: none;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .post {
@@ -262,7 +263,7 @@ nav {
     border-left: 2px solid $gray;
     padding: 0.1em 1em;
     color: $gray;
-    font-size: 22px;
+    font-size: 18px;
     font-style: italic;
     
   }
