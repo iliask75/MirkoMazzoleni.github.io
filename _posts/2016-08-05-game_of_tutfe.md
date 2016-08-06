@@ -1,8 +1,9 @@
-# GoT Battles - A Games of Tufte
-Mirko Mazzoleni 
-05 August 2016 
 
-
+---
+layout: post
+title: "GoT Battles - A Games of Tufte - Part I"
+date: 2016-08-06
+---
 
 This report concerns an exploratory data analysis based on the Games of Thrones dataset hosted on [Kaggle](https://www.kaggle.com/mylesoneill/game-of-thrones). The aim of this work is to familiarize with the data for subsequent analysis, and using the Tufte design rules to represent the plots. During the process, personal domain knowledge (acquired from books and not the tv series) is used to motivate hypothesis and decisions. Since there aren't motivations or questions that brought me to collect data, in order to answer to them, we let the Exploratory Data Analysis phase to generate questions for us. A sound answer to those questions would require at least another dataset, so we let to fix in mind the fact that we are simply describing the dataset at hand, without the temptation to make inferences or other types of final statements.
 
