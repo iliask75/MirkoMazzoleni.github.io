@@ -771,7 +771,7 @@ where $n$ is the number of won battles, $m$ is the number of lost battles and $p
 
 ### Most powerful houses
 
-By using the PageRank algorithm, it is possible to assign a value to each node in the graph. In the case of Google, each node is a document, a web page, and the edges are links between pages. If a page has an incoming link from an important page, that link carries more value. In our context, we suppose this mean that win against the Lannister's, for example, carries more value than to win against the Glover's, and the algorithm is able to exploit this based on the graph structure of won and lost battles (again, incoming and outcoming edges).
+By using the **PageRank** algorithm, it is possible to assign a value to each node in the graph. In the case of Google, each node is a document, a web page, and the edges are links between pages. If a page has an incoming link from an important page, that link carries more value. In our context, we suppose this mean that win against the Lannister's, for example, carries more value than to win against the Glover's, and the algorithm is able to exploit this based on the graph structure of won and lost battles (again, incoming and outcoming edges).
 From Wikipedia:
 
 > The PageRank algorithm outputs a probability distribution used to represent the likelihood that a person randomly clicking on links will arrive at any particular page
