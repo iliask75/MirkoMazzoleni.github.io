@@ -74,7 +74,7 @@ Being the dataset composed most by categorical variables, we want to know first 
 This section deals with the understanding and cleaning of categorical variables in the dataset.
 
 #### Attacker King
-The variables represents the attacker's king. A slash indicators that the king charges over the course of the war.
+The variable represents the attacker's king. A slash indicates that the king changes over the course of the war.
 
 ```r
 levels(battles$attacker_king)
@@ -85,8 +85,8 @@ levels(battles$attacker_king)
 ## [3] "Joffrey/Tommen Baratheon" "Robb Stark"              
 ## [5] "Stannis Baratheon"
 ```
-The fact, in some circumstances, there isn't an attacking king is not an error: simply can be that there is no attacking king commanding the troops. 
-In this case throwing away missing data can be detrimental, as they can be source of information. For example, a value of "" can mean "unknown" or "not applicable", so it should be encoded in that way. Usually I search for trend in missing data to see if they miss for a reason.
+The fact, in some circumstances, that there isn't an attacking king is not an error: simply can be that there is no attacking king commanding the troops. 
+In this case throwing away missing data can be detrimental, as they can be source of information. For example, a value of " " can mean "unknown" or "not applicable", so it should be encoded in that way. Usually I search for trend in missing data to see if they miss for a reason.
 
 **Question Q1**: Does the " " level mean something? **Expectation E1**: Yes, simply there's no king. **Answer A1**: The " " stands for "NoKing".
 
@@ -319,7 +319,7 @@ levels(battles$attacker_outcome)[match("",levels(battles$attacker_outcome))]="un
 
 
 #### Defenders
-These variables indicates the major houses defending.
+This variable indicates the major houses defending.
 
 ```r
 levels(battles$defender_1)
@@ -402,6 +402,7 @@ levels(battles$attacker_outcome)
 
 #### Battle types
 A classification of the battle's primary type. Categories: 
+
 - Pitched_battle: armies meet in a location and fight. 
 - Ambush: a battle where stealth or subterfuge was the primary means of attack. 
 - Siege: a prolonged of a forties position. 
