@@ -764,9 +764,10 @@ The direction of the edge is from a loser to a winner, and a darker edge color s
 
 By counting the in-degree (number of battles won) and the total degee of a node (number of battle fought), is possible to compute how the house performed in terms of efficiency. Since the number of battles for each house is small, we employ the *Laplace correction* to correct for the small sample size:
 
-      $$
-        p(win)=\frac{n+1}{n+m+2}
-      $$
+$$
+  p(win)=\frac{n+1}{n+m+2}
+$$
+      
 where \$$n\$$ is the number of won battles, \&(m) is the number of lost battles and \\(win)\\ is the probability to win a battle.
 
 
