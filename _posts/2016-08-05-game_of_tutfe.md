@@ -8,7 +8,7 @@ This report concerns an exploratory data analysis based on the Games of Thrones 
 
 # Exploratory Data Analysis
 
-Let's load the required libraries and load the dataset which contains information about the main battles in the reign of Westeros, during the [War of the Five Kings](ttp://awoiaf.westeros.org/index.php/War_of_the_Five_Kings).
+Let's load the required libraries and load the dataset which contains information about the main battles in the reign of Westeros, during the [War of the Five Kings](http://awoiaf.westeros.org/index.php/War_of_the_Five_Kings).
 
 {% highlight r %}
 library(ggplot2)
