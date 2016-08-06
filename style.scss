@@ -89,7 +89,7 @@ ul {
 
 ol {
   list-style-type: decimal;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 ol ul, ul ol, ul ul, ol ol {
@@ -246,13 +246,13 @@ nav {
 .posts > .post {
   padding-bottom: 2em;
   border-bottom: 1px solid $lightGray;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .posts > .post:last-child {
   padding-bottom: 1em;
   border-bottom: none;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .post {
@@ -261,7 +261,7 @@ nav {
     border-left: 2px solid $gray;
     padding: 0.1em 1em;
     color: $gray;
-    font-size: 18px;
+    font-size: 16px;
     font-style: italic;
     
   }
