@@ -767,7 +767,7 @@ $p(win)=\frac{n+1}{n+m+2}$
 where $n$ is the number of won battles, $m$ is the number of lost battles and $p(win)$ is the probability to win a battle.
 
 
-![](//mirkomazzoleni/assets/games_of_tufte/unnamed-chunk-53-1.svg)<!-- -->
+![qqq]({{ site.url }}/assets/games_of_tufte/unnamed-chunk-53-1.svg)
 
 ### Most powerful houses
 
