@@ -61,7 +61,7 @@ str(battles)
 ```
 
 ## Data cleaning and questions generation 
-In this section, we will the following logical framework: 
+In this section, we will follow the following logical framework: 
 
 1. Letting the exploration to generate the questions
 2. Setting an expectation for what the data will tell us
