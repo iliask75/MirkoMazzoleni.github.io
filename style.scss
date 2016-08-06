@@ -9,6 +9,20 @@
 @import "variables";
 // Syntax highlighting @import is at the bottom of this file
 
+
+/*
+ * Equations with KaTeX
+ *
+ * Center the equation content.
+ */
+.equation {
+  padding-bottom:  1rem;
+  padding-top:     1rem;
+  text-align:      center;
+  font-size:       1.5em;
+}
+
+
 /**************/
 /* BASE RULES */
 /**************/
