@@ -18,7 +18,7 @@ html {
 }
 
 body {
-	background: $white;
+  background: $white;
   font: 18px/1.4 $helvetica;
   color: $darkGray;
 
@@ -90,7 +90,7 @@ ul {
 
 ol {
   list-style-type: decimal;
-     font-size: 18px;
+  font-size: 15px;
 }
 
 ol ul, ul ol, ul ul, ol ol {
@@ -103,7 +103,6 @@ ul ul, ol ul {
 
 em, i {
   font-style: italic;
-    font-size: 18px;
 }
 
 strong, b {
@@ -274,7 +273,7 @@ nav {
 
   .read-more {
     text-transform: uppercase;
-    font-size: 15px;
+    font-size: 13px;
   }
 }
 
