@@ -1,29 +1,7 @@
 ---
+layout: post
 title: "GoT Battles - A Games of Tufte"
-author: "Mirko Mazzoleni"
-date: "05 August 2016"
-output:
-  html_document:
-    keep_md: yes
-    number_sections: yes
-    theme: spacelab
-    toc: yes
 ---
-
-# Acknowledgements
-
-  * [Some analysis of Game of Throne data](https://www.kaggle.com/sergeycherkasov/d/mylesoneill/game-of-thrones/test-test) - Sergey Cherkasov
-  * [Exploratory Analysis and Predictions](https://www.kaggle.com/shaildeliwala/d/mylesoneill/game-of-thrones/exploratory-analysis-and-predictions) - Shail Deliwala
-  * [Systematic Analysis on GoT Battles](https://www.kaggle.com/gowrishankarin/d/mylesoneill/game-of-thrones/analysis-on-battles) - Gowri Shankar
-  * [Battles investigation](https://www.kaggle.com/colinfraser/d/mylesoneill/game-of-thrones/battles-investigation) - ColinFraser
-  * [Tufte in R](http://motioninsocial.com/tufte/) - Lukasz Piwek
-  
-
-# Employed time
-
-- Data cleaning and question generation: 60%
-- More questions: 20%
-- Graph of thrones: 20%
 
 # Exploratory Data Analysis
 This report concerns an exploratory data analysis based on the Games of Thrones dataset hosted on [Kaggle](https://www.kaggle.com/mylesoneill/game-of-thrones). The aim of this work is to familiarize with the data for subsequent analysis, and using the Tufte design rules to represent the plots. During the process, personal domain knowledge (acquired from books and not the tv series) is used to motivate hypothesis and decisions. Since there aren't motivations or questions that brought me to collect data, in order to answer to them, we let the Exploratory Data Analysis phase to generate questions for us. A sound answer to those questions would require at least another dataset, so we let to fix in mind the fact that we are simply describing the dataset at hand, without the temptation to make inferences or other types of final statements.
@@ -946,5 +924,13 @@ sum(pr$vector)
 {% endhighlight %}
 
 
+
+# Acknowledgements
+
+  * [Some analysis of Game of Throne data](https://www.kaggle.com/sergeycherkasov/d/mylesoneill/game-of-thrones/test-test) - Sergey Cherkasov
+  * [Exploratory Analysis and Predictions](https://www.kaggle.com/shaildeliwala/d/mylesoneill/game-of-thrones/exploratory-analysis-and-predictions) - Shail Deliwala
+  * [Systematic Analysis on GoT Battles](https://www.kaggle.com/gowrishankarin/d/mylesoneill/game-of-thrones/analysis-on-battles) - Gowri Shankar
+  * [Battles investigation](https://www.kaggle.com/colinfraser/d/mylesoneill/game-of-thrones/battles-investigation) - ColinFraser
+  * [Tufte in R](http://motioninsocial.com/tufte/) - Lukasz Piwek
 
 
