@@ -92,9 +92,12 @@ ol {
   list-style-type: decimal;
 }
 
+li{
+	   font-size: 18px;
+}
+
 ol ul, ul ol, ul ul, ol ol {
   margin: 0;
-   font-size: 18px;
 }
 
 ul ul, ol ul {
