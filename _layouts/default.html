@@ -2,21 +2,6 @@
 <html>
   <head>
     
-    <script> MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-      }
-    });</script>
-    
-    <script>MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });</script>
-    
-    <style>code.has-jax {font: inherit; font-size: 100%; background: inherit; border: inherit;}</style>
-   
     <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
 
     {% include meta.html %}
