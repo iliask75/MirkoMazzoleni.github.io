@@ -1,7 +1,9 @@
 ---
 layout: post
-title: "GoT Battles - A Games of Tufte - Part I"
+title: "A Games of Tufte - Part I"
 date: 2016-08-06
+category: coding
+tags: [R, Kaggle, EDA, DataViz, Fantasy]
 ---
 
 
