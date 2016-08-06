@@ -564,7 +564,7 @@ This section deals with the understanding and cleaning of numerical variables in
 
 #### Year
 
-The year of the battle. We convert it to a factor variable for convenience and representation, since it assumes only $3$ different values.
+The year of the battle. We convert it to a factor variable for convenience and representation, since it assumes only $$3$$ different values.
 
 ```r
 summary(battles$year)
@@ -590,9 +590,9 @@ summary(battles$attacker_size)
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
 ##      20    1375    4000    9943    8250  100000      14
 ```
-From the summary we can see that the distribution of the attacker army has a mean of about $10000$ soldiers , but is very scattered with many missing numbers. Particularly impressing is maximum number of $100000$ men.
+From the summary we can see that the distribution of the attacker army has a mean of about $$10000$$ soldiers , but is very scattered with many missing numbers. Particularly impressing is maximum number of $$100000$$ men.
 
-**Question Q14**: Which is the battle with $100000$ men? **Expectation E14**: A battle in the North with the wildlings. **Answer A14**: The battle was the assault of Castle Black by the wildlings and free folk, when Jon Snow loses Igritte. We can see that there is an error in the data, because we know that Stannis Baratheon was on the Night's side, defending the Nigth's Watch and seizing Mance Rayder. Furthermore, Stannis won the battle and Mance Rayder lost it, thus the *attacker_king* and *defender_king* variables should be swapped. The number of $100000$ is more meaningful now if we think of it as the army of all the freefolks, as it is also reported [here](http://awoiaf.westeros.org/index.php/Battle_of_Castle_Black).
+**Question Q14**: Which is the battle with $100000$ men? **Expectation E14**: A battle in the North with the wildlings. **Answer A14**: The battle was the assault of Castle Black by the wildlings and free folk, when Jon Snow loses Igritte. We can see that there is an error in the data, because we know that Stannis Baratheon was on the Night's side, defending the Nigth's Watch and seizing Mance Rayder. Furthermore, Stannis won the battle and Mance Rayder lost it, thus the *attacker_king* and *defender_king* variables should be swapped. The number of $$100000$$ is more meaningful now if we think of it as the army of all the freefolks, as it is also reported [here](http://awoiaf.westeros.org/index.php/Battle_of_Castle_Black).
 
 ```r
 battles[which(battles$attacker_size==100000),c("name","attacker_king","defender_king","attacker_1","defender_1","attacker_outcome")]
@@ -615,11 +615,11 @@ battles$attacker_king=as.factor(battles$attacker_king)
 battles$defender_king=as.factor(battles$defender_king)
 ```
 
-**Question Q15**: When attacking, which battle type required more men? **Expectation E15**: Probably the *pitched battle* type, since it requires more men than ambush or a siege, which require more discretion and tools (trebuchets, rams) capability respectively. **Answer 15**: The *pitched battle* has the higher median (about $10000$ troops) and it is very skewed around this value, and only $25%$ of values are lower than $3000$ troops. Perhaps surprising, the median of the *ambush* distribution is similar to that of *siege*, being the latter more concentrated, indicating that there some standard number of troops to do a siege. Here we have isolated cases of ambushes with less than $30$ men, and a siege with $100000$ men (the Mance Rayder attack to Castle Black).
+**Question Q15**: When attacking, which battle type required more men? **Expectation E15**: Probably the *pitched battle* type, since it requires more men than ambush or a siege, which require more discretion and tools (trebuchets, rams) capability respectively. **Answer 15**: The *pitched battle* has the higher median (about $$10000$$ troops) and it is very skewed around this value, and only $$25%$$ of values are lower than $$3000$$ troops. Perhaps surprising, the median of the *ambush* distribution is similar to that of *siege*, being the latter more concentrated, indicating that there some standard number of troops to do a siege. Here we have isolated cases of ambushes with less than $$30$$ men, and a siege with $$100000$$ men (the Mance Rayder attack to Castle Black).
 We Do not consider "unknown" o "razing" battles since they have few or none observations.
 ![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-35-1.svg)<!-- -->
 
-**Question Q16**: When attacking, which king had the most numerous army?  **Expectation E16**: We already know that Mance Rayder commanded $100000$ men. **Answer 16**: Mance had the most numerous attacking army, but he attacked only one time, so it is more interesting to considered the other kings. I made the choice to exclude from the comparison also the "NoKing" category, since it has few observations. We can see from the plot that the Greyjoy's had the smallest army, ranging from $10$ to $1000$ men. The Lannister's and the Stark's show a high median value army, but that also had great variation in its forces, mainly for Robb Stark. This can be probably due to his attitude to perform ambush attacks with few men. Stannis Baratheon forces undergo few losses, having a quite concentrated distribution.
+**Question Q16**: When attacking, which king had the most numerous army?  **Expectation E16**: We already know that Mance Rayder commanded $$100000$$ men. **Answer 16**: Mance had the most numerous attacking army, but he attacked only one time, so it is more interesting to considered the other kings. I made the choice to exclude from the comparison also the "NoKing" category, since it has few observations. We can see from the plot that the Greyjoy's had the smallest army, ranging from $$10$$ to $$1000$$ men. The Lannister's and the Stark's show a high median value army, but that also had great variation in its forces, mainly for Robb Stark. This can be probably due to his attitude to perform ambush attacks with few men. Stannis Baratheon forces undergo few losses, having a quite concentrated distribution.
 ![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-36-1.svg)<!-- -->
 
 
@@ -645,7 +645,7 @@ This section highlights and depicts more question that arise from the data.
 
 ### Major deaths and captures rate
 
-The following plots shows how the major deaths and captures are spread across the battle succession across the years. The major number of them happen in the year $299$, were almost each battle generates a major death. In the year $300$, it seems that no more major characters die in battle, with only one of them captured. It can bee seen that the majority of deaths and captures happen in the *Riverlands* and in the *North*. From the graph emerges that the cumulated number of deaths is always higher than the cumulated number of captures, symptom that the soldiers prefer to kill rather than take prisoners.
+The following plots shows how the major deaths and captures are spread across the battle succession across the years. The major number of them happen in the year $$299$$, were almost each battle generates a major death. In the year $$300$$, it seems that no more major characters die in battle, with only one of them captured. It can bee seen that the majority of deaths and captures happen in the *Riverlands* and in the *North*. From the graph emerges that the cumulated number of deaths is always higher than the cumulated number of captures, symptom that the soldiers prefer to kill rather than take prisoners.
 ![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-39-1.svg)<!-- -->
 
 
@@ -658,14 +658,14 @@ The plots shows the number of won battles by each king, thanks a specific comman
 
 ### Type of battles won  by each king, when attacking
 
-The plots shows the number of won battles by each king, thanks a specific tactic, with a different color for each year in which the battle was fought. We can see that Robb Stark preferred to fight with ambushes, while the Lannister's with pitched battles since the year $299$, and  with sieges from the year $300$.
+The plots shows the number of won battles by each king, thanks a specific tactic, with a different color for each year in which the battle was fought. We can see that Robb Stark preferred to fight with ambushes, while the Lannister's with pitched battles since the year $$299$$, and  with sieges from the year $$300$$.
 
 ![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-41-1.svg)<!-- -->
 
 
 ### Number of battles fought in summer and winter
 
-The plots shows the number of won battles by each king fought in summer (1) or winter (0), with a different color for each year in which the battle was fought. The poor Robb Stark died during the Red Wedding in year $299$, so he did not fight any battle during year $300$.We can see that winter has finally come in year $300$. Brace yourself!! 
+The plots shows the number of won battles by each king fought in summer (1) or winter (0), with a different color for each year in which the battle was fought. The poor Robb Stark died during the Red Wedding in year $$299$$, so he did not fight any battle during year $$300$$.We can see that winter has finally come in year $$300$$. Brace yourself!! 
 
 ![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-42-1.svg)<!-- -->
 
@@ -780,7 +780,7 @@ From Wikipedia:
 
 Adapting the reasoning to our case, we can think of it as in terms of houses and battle outcomes. By walking through the Markov network following edge direction (which is from loser to winner), we discover the stationary probability distribution of the Markov chain. This represent the probability that, starting from a house at random and moving in the direction of battles outcome, after a while we expect to celebrate the victory of a house for that invariant amount of time.
 
-The results show that the house Frey is the most powerful, and the $11.7% of times we expect to come to House Frey having a party for their victory.
+The results show that the house Frey is the most powerful, and the $$11.7%$$ of times we expect to come to House Frey having a party for their victory.
 
 
 ```r
