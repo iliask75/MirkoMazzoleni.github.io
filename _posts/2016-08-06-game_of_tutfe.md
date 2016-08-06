@@ -418,7 +418,7 @@ levels(battles$battle_type)
 ## [5] "siege"
 ```
 
-**Question Q9**: What does it mean the value " " on the variable *battle_type*? **Expectation E9**: Probably an unknown battle type. **Answer A9**: The value is not indicated because is unknown how the battle went and its outcome, being the battle the Siege of Winterfell by Stannis Baratheon
+**Question Q9**: What does it mean the value " " on the variable *battle_type*? **Expectation E9**: Probably an unknown battle type. **Answer A9**: The value is not indicated because is unknown how the battle went and its outcome, being the battle the Siege of Winterfell by Stannis Baratheon.
 
 ```r
 battles[which(battles$battle_type==""),c("name","attacker_king","attacker_outcome","defender_king","battle_type")]
@@ -480,7 +480,7 @@ head(levels(battles$defender_commander))
 ## [1] ""                 "Amory Lorch"      "Asha Greyjoy"    
 ## [4] "Beric Dondarrion" "Bran Stark"       "Brynden Tully"
 ```
-**Question Q11**: What does it mean the value " " on the variable *defender_commander*? **Expectation E11**: Probably a missing or unknown commander. **Answer A11**: The value is not indicated because there wasn't a commander, or it was unknown. In the battles where there is "NoKing" as *defender_king*, we can assume that the a *defender_commander* was not present. In the rest of the battles, which most of them are led by the Greyjoy, probably there was a *defender_commander* but is not indicated, and thus is unknown.
+**Question Q11**: What does it mean the value " " on the variable *defender_commander*? **Expectation E11**: Probably a missing or unknown commander. **Answer A11**: The value is not indicated because there wasn't a commander, or it was unknown. In the battles where there is "NoKing" as *defender_king*, we can assume that the a *defender_commander* was not present. In the rest of the battles, which most of them are led by the Greyjoy's, probably there was a *defender_commander* but is not indicated, and thus is unknown.
 
 ```r
 battles[which(battles$defender_commander==""),c("name","attacker_king","defender_king","battle_type")]
@@ -520,7 +520,7 @@ battles$defender_commander = droplevels(battles$defender_commander)
 
 
 #### Battles locations
-This variable represent the battle location.
+This variable represents the battle location.
 
 ```r
 head(levels(battles$location))
