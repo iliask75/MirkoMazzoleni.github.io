@@ -648,7 +648,7 @@ This section highlights and depicts more question that arise from the data.
 
 ### Major deaths and captures rate
 
-The following plots shows how the major deaths and captures are spread across the battle succession across the years. The major number of them happen in the year $$299$$, were almost each battle generates a major death. In the year $$300$$, it seems that no more major characters die in battle, with only one of them captured. It can bee seen that the majority of deaths and captures happen in the *Riverlands* and in the *North*. From the graph emerges that the cumulated number of deaths is always higher than the cumulated number of captures, symptom that the soldiers prefer to kill rather than take prisoners.
+The following plot shows how the major deaths and captures are spread across the battle succession across the years. The major number of them happen in the year $$299$$, were almost each battle generates a major death. In the year $$300$$, it seems that no more major characters die in battle, with only one of them captured. It can bee seen that the majority of deaths and captures happen in the *Riverlands* and in the *North*. From the graph emerges that the cumulated number of deaths is always higher than the cumulated number of captures, symptom that the soldiers prefer to kill rather than take prisoners.
 ![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-39-1.svg)<!-- -->
 
 
