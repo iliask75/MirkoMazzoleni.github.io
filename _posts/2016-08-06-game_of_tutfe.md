@@ -668,7 +668,7 @@ The plots shows the number of won battles by each king, thanks a specific tactic
 
 ### Number of battles fought in summer and winter
 
-The plots shows the number of won battles by each king fought in summer (1) or winter (0), with a different color for each year in which the battle was fought. The poor Robb Stark died during the Red Wedding in year $$299$$, so he did not fight any battle during year $$300$$.We can see that winter has finally come in year $$300$$. Brace yourself!! 
+The plots shows the number of won battles by each king fought in summer (1) or winter (0), with a different color for each year in which the battle was fought. The poor Robb Stark died during the Red Wedding in year $$299$$, so he did not fight any battle during year $$300$$. We can see that winter has finally come in year $$300$$. Brace yourself!! 
 
 ![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-42-1.svg)<!-- -->
 
