@@ -713,7 +713,7 @@ The plot seems to suggest that there is a linear relationship between the size o
 
 ## Graph of Thrones
 
-The following section (which owes a lot to the Kaggle's user [ColinFraser](https://www.kaggle.com/colinfraser/d/mylesoneill/game-of-thrones/battles-investigation), deals with the use of graph algorithms to analyse the social relations between houses, during the battles. By using the variables *attacker_i* and *defender_i*, with $i=1...4$, is possible to build a graph which vertices are the house names, and an edge is present between two of them if a battle has been fought between the two houses. 
+The following section (which owes a lot to the Kaggle's user [ColinFraser](https://www.kaggle.com/colinfraser/d/mylesoneill/game-of-thrones/battles-investigation), deals with the use of graph algorithms to analyse the social relations between houses, during the battles. By using the variables *attacker_i* and *defender_i*, with $$i=1\dots 4$$, is possible to build a graph which vertices are the house names, and an edge is present between two of them if a battle has been fought between the two houses. 
 
 
 ```r
