@@ -595,7 +595,7 @@ summary(battles$attacker_size)
 ```
 From the summary we can see that the distribution of the attacker army has a mean of about $$10000$$ soldiers , but is very scattered with many missing numbers. Particularly impressing is maximum number of $$100000$$ men.
 
-**Question Q14**: Which is the battle with $100000$ men? **Expectation E14**: A battle in the North with the wildlings. **Answer A14**: The battle was the assault of Castle Black by the wildlings and free folk, when Jon Snow loses Igritte. We can see that there is an error in the data, because we know that Stannis Baratheon was on the Night's side, defending the Nigth's Watch and seizing Mance Rayder. Furthermore, Stannis won the battle and Mance Rayder lost it, thus the *attacker_king* and *defender_king* variables should be swapped. The number of $$100000$$ is more meaningful now if we think of it as the army of all the freefolks, as it is also reported [here](http://awoiaf.westeros.org/index.php/Battle_of_Castle_Black).
+**Question Q14**: Which is the battle with $$100000$$ men? **Expectation E14**: A battle in the North with the wildlings. **Answer A14**: The battle was the assault of Castle Black by the wildlings and free folk, when Jon Snow loses Igritte. We can see that there is an error in the data, because we know that Stannis Baratheon was on the Night's side, defending the Nigth's Watch and seizing Mance Rayder. Furthermore, Stannis won the battle and Mance Rayder lost it, thus the *attacker_king* and *defender_king* variables should be swapped. The number of $$100000$$ is more meaningful now if we think of it as the army of all the freefolks, as it is also reported [here](http://awoiaf.westeros.org/index.php/Battle_of_Castle_Black).
 
 ```r
 battles[which(battles$attacker_size==100000),c("name","attacker_king","defender_king","attacker_1","defender_1","attacker_outcome")]
@@ -755,10 +755,8 @@ The direction of the edge is from a loser to a winner, and a darker edge color s
 
 
 **It is possible to label the edges with battle information, but the graph became too cluttered:**
-
 - Information regarding battles names:
 ![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-50-1.svg)<!-- -->
-
 - Information regarding battles locations:
 ![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-51-1.svg)<!-- -->
 
