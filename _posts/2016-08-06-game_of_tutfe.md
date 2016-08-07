@@ -755,9 +755,10 @@ The direction of the edge is from a loser to a winner, and a darker edge color s
 
 
 **It is possible to label the edges with battle information, but the graph became too cluttered:**
-- Information regarding battles names:
+
+- Information regarding battles names, where on each edge is indicated the name of that battle between two nodes (two houses):
 ![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-50-1.svg)<!-- -->
-- Information regarding battles locations:
+- Information regarding battles locations, where on each edge is indicated the location where that battle took place:
 ![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-51-1.svg)<!-- -->
 
 
