@@ -1,0 +1,38 @@
+---
+layout: page
+title: Categories
+permalink: /categories/
+---
+
+
+<section class="post-tags">
+    {% assign categories_list = site.categories %}
+    
+    {% if categories_list.first[0] == null %}
+    {% for cat in categories_list %}
+    <a class="post-tags-item" href="#{{ cat | slugify }}">{{ cat }}</a>
+    {% endfor %}
+    {% else %}
+    {% for cat in categories_list %}
+    <a class="post-tags-item" href="#{{ cat[0] | slugify }}">{{ cat[0] }}</a>
+    {% endfor %}
+    {% endif %}
+    
+    {% assign categories_list = nil %}
+
+</section>
+
+{% for category in site.categories %}
+{% capture cat %}{{ category | first }}{% endcapture %}
+
+<h2>{{ cat | capitalize }}</h2>
+	<ul>
+	{% for post in site.categories[cat] %}
+	  <li>
+	  <p><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+	     <span class="date"> - {{ post.date | date_to_long_string }}</span></p>
+	  </li>
+	{% endfor %}
+	</ul>
+
+{% endfor %}

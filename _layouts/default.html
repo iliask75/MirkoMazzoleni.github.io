@@ -1,89 +1,50 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    
-    <!--Katex-->
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <!--<link rel="stylesheet" href="/public/katex.min.css">
-    <script src="/public/katex.min.js"></script> -->
-    <style>
-      /* We want previews included so at least the TeX source is visible to clients
-         without Javascript, or without network connection
-         (new option in kramdown 1.6, enabled in _config.yml)
-         but we hide them if math rendering completes sucessfully. */
-      .MathJax_Preview { color: #888 }
-      .math_finished .MathJax_Preview { display: none }
-    </style>
-    
-    
-    
+<html lang="en-us">
 
-    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
-
-    {% include meta.html %}
-
-    <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
-    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
-
-
-    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
-  </head>
+  {% include head.html %}
 
   <body>
-    <div class="wrapper-masthead">
-      <div class="container">
-        <header class="masthead clearfix">
-          <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.avatar }}" /></a>
 
-          <div class="site-info">
-            <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
-            <p class="site-description">{{ site.description }}</p>
-          </div>
+    {% include sidebar.html %}
 
-          <nav>
-            <a href="{{ site.baseurl }}/">Blog</a>
-            <a href="{{ site.baseurl }}/about">About</a>
-          </nav>
-        </header>
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="{{ site.baseurl }}/" title="Home">{{ site.title }}</a>
+            <small>{{ site.tagline }}</small>
+          </h3>
+        </div>
       </div>
-    </div>
 
-    <div id="main" role="main" class="container">
-      {{ content }}
-    </div>
-
-    <div class="wrapper-footer">
-      <div class="container">
-        <footer class="footer">
-          {% include svg-icons.html %}
-        </footer>
+      <div class="container content">
+        {{ content }}
       </div>
+    
     </div>
 
-    {% include analytics.html %}
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+     {% include google_analytics.html %}
   </body>
-  
-  
-  <!--katex-->
-  <!--<script>
-    var scripts = document.getElementsByTagName("script");
-    for (var i = 0; i < scripts.length; i++) {
-      /* TODO: keep going after an individual parse error. */
-      var script = scripts[i];
-      if (script.type.match(/^math\/tex/)) {
-        var text = script.text === "" ? script.innerHTML : script.text;
-        var options = script.type.match(/mode\s*=\s*display/) ?
-                      {displayMode: true} : {};
-        script.insertAdjacentHTML("beforebegin",
-                                  katex.renderToString(text, options));
-      }
-    }
-    document.body.className += " math_finished";
-  </script>-->
 
 </html>

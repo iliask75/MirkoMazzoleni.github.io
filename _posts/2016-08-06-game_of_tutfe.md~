@@ -1,11 +1,9 @@
 ---
 layout: post
-title: "A Games of Tufte"
+title: "A Games of Tufte - Part I"
 date: 2016-08-06
-author: mirko
 category: Storytelling
-tags: [R, Kaggle, DataViz]
-comments: true
+tags: [R, Kaggle, EDA, DataViz]
 ---
 
 
@@ -165,7 +163,7 @@ levels(battles$attacker_king)[match("",levels(battles$attacker_king))]="NoKing"
 
 **Question Q2**: Who is the king who attacked more? **Expectation E2**: Joffrey/Tommen Baratheon, being Joffrey the most sadistic character. **Answer A2**: Joffrey/Tommen Baratheon
 
-![]({{ site.baseurl }}/images/2016-08-06-games_of_tufte/unnamed-chunk-9-1.svg)<!-- -->
+![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-9-1.svg)<!-- -->
 
 
 
@@ -228,11 +226,11 @@ levels(battles$defender_king)[match("",levels(battles$defender_king))]="NoKing"
 
 **Question Q4**: Whose king undergone more attacks? **Expectation E4**: Robb Stark, it seems that everyone wants the North. **Answer A4**: Robb Stark.
 
-![]({{ site.baseurl }}/images/2016-08-06-games_of_tufte/unnamed-chunk-13-1.svg)<!-- -->
+![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-13-1.svg)<!-- -->
 
 **Observation O1**: From the previous plots, it seems that both Renly Baratheon and Mance Rayder did not have the time, or the will, to perform any attack: they only defended their position.
 
-  
+
 #### Attackers
 These variables indicates the major houses attacking.
 
@@ -622,10 +620,10 @@ battles$defender_king=as.factor(battles$defender_king)
 
 **Question Q15**: When attacking, which battle type required more men? **Expectation E15**: Probably the *pitched battle* type, since it requires more men than ambush or a siege, which require more discretion and tools (trebuchets, rams) capability respectively. **Answer 15**: The *pitched battle* has the higher median (about $$10000$$ troops) and it is very skewed around this value, and only $$25%$$ of values are lower than $$3000$$ troops. Perhaps surprising, the median of the *ambush* distribution is similar to that of *siege*, being the latter more concentrated, indicating that there some standard number of troops to do a siege. Here we have isolated cases of ambushes with less than $$30$$ men, and a siege with $$100000$$ men (the Mance Rayder attack to Castle Black).
 We Do not consider "unknown" o "razing" battles since they have few or none observations.
-![]({{ site.baseurl }}/images/2016-08-06-games_of_tufte/unnamed-chunk-35-1.svg)<!-- -->
+![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-35-1.svg)<!-- -->
 
 **Question Q16**: When attacking, which king had the most numerous army?  **Expectation E16**: We already know that Mance Rayder commanded $$100000$$ men. **Answer 16**: Mance had the most numerous attacking army, but he attacked only one time, so it is more interesting to considered the other kings. I made the choice to exclude from the comparison also the "NoKing" category, since it has few observations. We can see from the plot that the Greyjoy's had the smallest army, ranging from $$10$$ to $$1000$$ men. The Lannister's and the Stark's show a high median value army, but that also had great variation in its forces, mainly for Robb Stark. This can be probably due to his attitude to perform ambush attacks with few men. Stannis Baratheon forces undergo few losses, having a quite concentrated distribution.
-![]({{ site.baseurl }}/images/2016-08-06-games_of_tufte/unnamed-chunk-36-1.svg)<!-- -->
+![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-36-1.svg)<!-- -->
 
 
 #### Defender size
@@ -641,7 +639,7 @@ summary(battles$defender_size)
 ```
 
 **Question Q17**: When attacking, which king had the most numerous army?  **Expectation E17**:Probably the Lannister's or Stannis Baratheon. **Answer 17**: Apart from the "Noking" and "Renly Baratheon", which have few observation, the plots show that the Lannister's defended their position with more troops than the other, and Stannis Baratheon, despite attacking with an high number of troops, defended with very few ones.
-![]({{ site.baseurl }}/images/2016-08-06-games_of_tufte/unnamed-chunk-38-1.svg)<!-- -->
+![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-38-1.svg)<!-- -->
 
 
 ## More questions
@@ -651,34 +649,34 @@ This section highlights and depicts more question that arise from the data.
 ### Major deaths and captures rate
 
 The following plot shows how the major deaths and captures are spread across the battle succession across the years. The major number of them happen in the year $$299$$, were almost each battle generates a major death. In the year $$300$$, it seems that no more major characters die in battle, with only one of them captured. It can bee seen that the majority of deaths and captures happen in the *Riverlands* and in the *North*. From the graph emerges that the cumulated number of deaths is always higher than the cumulated number of captures, symptom that the soldiers prefer to kill rather than take prisoners.
-![]({{ site.baseurl }}/images/2016-08-06-games_of_tufte/unnamed-chunk-39-1.svg)<!-- -->
+![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-39-1.svg)<!-- -->
 
 
 
 ### Number of battles won by each commander, when attacking
 
 The plots shows the number of won battles by each king, thanks a specific commander, with a different color for each region where the battle was fought. It can be noticed that the Greyjoy's fought almost in the North, while the Lannister's and the Stark's fought all across Westeros. Gregor Clegane (the Mountain) is the commander who won more battles. Folks with no king fought only in the Riverlands.
-![]({{ site.baseurl }}/images/2016-08-06-games_of_tufte/unnamed-chunk-40-1.svg)<!-- -->
+![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-40-1.svg)<!-- -->
 
 
 ### Type of battles won  by each king, when attacking
 
 The plots shows the number of won battles by each king, thanks a specific tactic, with a different color for each year in which the battle was fought. We can see that Robb Stark preferred to fight with ambushes, while the Lannister's with pitched battles since the year $$299$$, and  with sieges from the year $$300$$.
 
-![]({{ site.baseurl }}/images/2016-08-06-games_of_tufte/unnamed-chunk-41-1.svg)<!-- -->
+![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-41-1.svg)<!-- -->
 
 
 ### Number of battles fought in summer and winter
 
 The plots shows the number of won battles by each king fought in summer (1) or winter (0), with a different color for each year in which the battle was fought. The poor Robb Stark died during the Red Wedding in year $$299$$, so he did not fight any battle during year $$300$$. We can see that winter has finally come in year $$300$$. Brace yourself!! 
 
-![]({{ site.baseurl }}/images/2016-08-06-games_of_tufte/unnamed-chunk-42-1.svg)<!-- -->
+![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-42-1.svg)<!-- -->
 
 ### King vs. King
 
 This plots shows the preferred king versus whose each king fought his battles.
 
-![]({{ site.baseurl }}/images/2016-08-06-games_of_tufte/unnamed-chunk-43-1.svg)<!-- -->
+![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-43-1.svg)<!-- -->
 
 By inspecting the plot, it seems strange that *Balon/Euron Greyjoy* attack himself. The battle considered is the *Sack of Torrhen's Square*.  In fact, the defender king would be *Bran Stark*, since Robb is dead. I make the decision to substitute the defender king with *Robb Stark* indicating that the defenders are the Stark's. 
 
@@ -697,18 +695,18 @@ battles[idx_battle,"defender_king"]="Robb Stark"
 ```
 
 The correct plot is the following. We can see that Robb Stark fought mainly versus Joffrey Baratheon and viceversa. The troops without a king fought each other. Stannis fought first versus his brother Renly and then versus the Lannister's.
-![]({{ site.baseurl }}/images/2016-08-06-games_of_tufte/unnamed-chunk-45-1.svg)<!-- -->
+![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-45-1.svg)<!-- -->
 
 
 The previous plots do not change except for those of  **Question Q4**, for which the answer remain unchanged. The correct plots are reported here.
 
-![]({{ site.baseurl }}/images/2016-08-06-games_of_tufte/unnamed-chunk-46-1.svg)<!-- -->
+![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-46-1.svg)<!-- -->
 
 
 ### Battle success given army forces
 
 The plot seems to suggest that there is a linear relationship between the size of the attacking army and the size of the defending one, maybe due to information that each rival part has about the other. It seems that after a certain attacker size threshold, the loss is more probable. Maybe is difficult to coordinate such many men, versus a numerous defending army. Having a bigger army, therefore, does not mean to win for sure.
-![]({{ site.baseurl }}/images/2016-08-06-games_of_tufte/unnamed-chunk-47-1.svg)<!-- -->
+![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-47-1.svg)<!-- -->
 
 
 
@@ -753,15 +751,15 @@ simple_house_graph <- house_graph %>% simplify(remove.loops = F,
 
 The direction of the edge is from a loser to a winner, and a darker edge color show how many battles are present with that edge direction (that is, with that battle outcome): the darker, the higher. It can be seen that the Frey's fought with many houses and won many battles, and how the Nigth's Watch are isolated from the rest of the world. Interestingly, even the Tyrell's fought only versus the Greyjoy's. Both the Tully's and the Stark's won more battles versus the Lannister's with respect to how many they lost versus them, but for the latter house, they are behind the Greyjoy as direct matches won. Interesting is the loop around house Baratheon, which represent the figths of Stannis versus his brother Renly.
 
-![]({{ site.baseurl }}/images/2016-08-06-games_of_tufte/unnamed-chunk-49-1.svg)<!-- -->
+![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-49-1.svg)<!-- -->
 
 
 **It is possible to label the edges with battle information, but the graph became too cluttered:**
 
 - Information regarding battles names, where on each edge is indicated the name of that battle between two nodes (two houses):
-![]({{ site.baseurl }}/images/2016-08-06-games_of_tufte/unnamed-chunk-50-1.svg)<!-- -->
+![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-50-1.svg)<!-- -->
 - Information regarding battles locations, where on each edge is indicated the location where that battle took place:
-![]({{ site.baseurl }}/images/2016-08-06-games_of_tufte/unnamed-chunk-51-1.svg)<!-- -->
+![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-51-1.svg)<!-- -->
 
 
 ### Houses which won most
@@ -773,7 +771,7 @@ $$p(win)=\frac{n+1}{n+m+2}$$
 where $$n$$ is the number of won battles, $$m$$ is the number of lost battles and $$p(win)$$ is the probability to win a battle.
 
 
-![]({{ site.baseurl }}/images/2016-08-06-games_of_tufte/unnamed-chunk-53-1.svg)<!-- -->
+![]({{ site.baseurl }}/assets/games_of_tufte/unnamed-chunk-53-1.svg)<!-- -->
 
 ### Most powerful houses
 
