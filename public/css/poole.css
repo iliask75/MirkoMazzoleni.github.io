@@ -401,7 +401,7 @@ tbody tr:nth-child(odd) th {
   margin-right: -1rem
   font-family: "PT Sans", Helvetica, Arial, sans-serif;
   color: #ccc;
-  text-align: justify;
+  text-align: center;
 }
 
 /* Pagination items can be `span`s or `a`s */
