@@ -11,27 +11,11 @@ comments: true
 
 This report concerns an exploratory data analysis based on the Games of Thrones dataset hosted on [Kaggle](https://www.kaggle.com/mylesoneill/game-of-thrones). The aim of this work is to familiarize with the data for subsequent analysis, and using the Tufte design rules to represent the plots. During the process, personal domain knowledge (acquired from books and not the tv series) is used to motivate hypothesis and decisions. Since there aren't motivations or questions that brought me to collect data, in order to answer to them, we let the Exploratory Data Analysis phase to generate questions for us. A sound answer to those questions would require at least another dataset, so we let to fix in mind the fact that we are simply describing the dataset at hand, without the temptation to make inferences or other types of final statements.
 
+The entire code for this post can be found  [here](https://github.com/MirkoMazzoleni/MirkoMazzoleni.github.io/blob/master/Rmarkdowns/2016-08-05-game_of_tutfe.Rmd).
+
 
 # Exploratory Data Analysis
-Let's load the required libraries and load the dataset which contains information about the main battles in the reign of Westeros, during the [War of the Five Kings](ttp://awoiaf.westeros.org/index.php/War_of_the_Five_Kings).
-
-```r
-library(ggplot2)
-library(ggthemes)
-library(readr)
-library(stringr)
-library(igraph)
-library(dplyr)
-library(magrittr)
-library(tidyr)
-battles <- read.csv("data/battles.csv", header=TRUE, stringsAsFactors=TRUE)
-```
-
-We first take an overview of the dataset at hand by checking the variables at our disposal. We can see $$38$$ observations for each of the $$25$$ variables. The next step will be to gain confidence with the features and the values they can take.
-
-```r
-str(battles)
-```
+After having load the required libraries and the dataset, which contains information about the main battles in the reign of Westeros during the [War of the Five Kings](ttp://awoiaf.westeros.org/index.php/War_of_the_Five_Kings), let's first take an overview of the dataset at hand by checking the variables at our disposal. We can see $$38$$ observations for each of the $$25$$ variables. The next step will be to gain confidence with the features and the values they can take.
 
 ```
 ## 'data.frame':	38 obs. of  25 variables:
@@ -76,11 +60,7 @@ Being the dataset composed most by categorical variables, we want to know first 
 This section deals with the understanding and cleaning of categorical variables in the dataset.
 
 #### Attacker King
-The variable represents the attacker's king. A slash indicates that the king changes over the course of the war.
-
-```r
-levels(battles$attacker_king)
-```
+The variable represents the attacker's king. A slash indicates that the king changes over the course of the war. The levels of this variable are:
 
 ```
 ## [1] ""                         "Balon/Euron Greyjoy"     
@@ -92,22 +72,14 @@ In this case throwing away missing data can be detrimental, as they can be sourc
 
 **Question Q1**: Does the " " level mean something? **Expectation E1**: Yes, simply there's no king. **Answer A1**: The " " stands for "NoKing".
 
-- Check the battle names where there is no attacker king and possible notes on that battles
-
-```r
-battles[which(battles$attacker_king==""),c("name","note")]
-```
+- Check the battle names where there is no attacker king and possible notes on that battles:
 
 ```
 ##                            name note
 ## 23 Battle of the Burning Septry     
 ## 30             Sack of Saltpans
 ```
-- Is the missing king due to the battle type? ==> NO, usually pitched battles have a king which guides the army, and troops without a king are expected to act as bandits, preferring a razing or ambush strategy
-
-```r
-table(battles$battle_type, battles$attacker_king=="")
-```
+- Is the missing king due to the battle type? ==> NO, usually pitched battles have a king which guides the army, and troops without a king are expected to act as bandits, preferring a razing or ambush strategy:
 
 ```
 ##                 
@@ -118,11 +90,7 @@ table(battles$battle_type, battles$attacker_king=="")
 ##   razing             1    1
 ##   siege             11    0
 ```
-- Is the missing king due to the attacker? ==> YES, the Brave Companions and the Brotherhood don't have a king
-
-```r
-table(battles$attacker_1, battles$attacker_king=="")
-```
+- Is the missing king due to the attacker? ==> YES, the Brave Companions and the Brotherhood don't have a king:
 
 ```
 ##                              
@@ -141,10 +109,6 @@ table(battles$attacker_1, battles$attacker_king=="")
 ```
 - Is the previous conclusion the right one? Let's Check for other associations. Seems that the Riverlands are land of no-one, and bandits or sellswords prefer to fight in that area!
 
-```r
-table(battles$region, battles$attacker_king=="")
-```
-
 ```
 ##                  
 ##                   FALSE TRUE
@@ -156,7 +120,7 @@ table(battles$region, battles$attacker_king=="")
 ##   The Stormlands      3    0
 ##   The Westerlands     3    0
 ```
-The most plausible answer is that the missing value is related to fighters which don't have a king. We can then fill the missing value with a new one.
+The most plausible answer is that the missing value is related to fighters which don't have a king. We can then fill the missing value with a new one, the "NoKing" value in this case.
 
 ```r
 levels(battles$attacker_king)[match("",levels(battles$attacker_king))]="NoKing"
@@ -171,11 +135,7 @@ levels(battles$attacker_king)[match("",levels(battles$attacker_king))]="NoKing"
 
 
 #### Defender King
-This variable represents the defender's king.
-
-```r
-levels(battles$defender_king)
-```
+This variable represents the defender's king. The levels are:
 
 ```
 ## [1] ""                         "Balon/Euron Greyjoy"     
@@ -186,23 +146,14 @@ levels(battles$defender_king)
 
 **Question Q3**: Does the " " level mean something? **Expectation E3**: Yes, simply there's no king. **Answer A3**: No king.
 
-From the data we can see that there are 3 battles without a defending king. Digging a little deeper shows that two of them were against the brave Companion which don't have a king, and the remaining one is a razing, that is, an attack against an undefended position. 
-
-```r
-battles[which(battles$defender_king==""),c("name","note")]
-```
-
+From the data we can see that there are 3 battles without a defending king. 
 ```
 ##                            name note
 ## 23 Battle of the Burning Septry     
 ## 25        Retaking of Harrenhal     
 ## 30             Sack of Saltpans
 ```
-
-```r
-table(battles$defender_1, battles$battle_type,battles$defender_king=="")[,,"TRUE"]
-```
-
+Digging a little deeper shows that two of them were against the brave Companion which don't have a king, and the remaining one is a razing, that is, an attack against an undefended position:
 ```
 ##                   
 ##                      ambush pitched battle razing siege
@@ -234,11 +185,9 @@ levels(battles$defender_king)[match("",levels(battles$defender_king))]="NoKing"
 
   
 #### Attackers
-These variables indicates the major houses attacking.
+These variables indicates the major houses attacking. 
 
-```r
-levels(battles$attacker_1)
-```
+Main attackers:
 
 ```
 ##  [1] "Baratheon"                   "Bolton"                     
@@ -249,27 +198,19 @@ levels(battles$attacker_1)
 ## [11] "Stark"
 ```
 
-```r
-levels(battles$attacker_2)
-```
-
+Second attackers:
 ```
 ## [1] ""          "Bolton"    "Frey"      "Greyjoy"   "Karstark"  "Lannister"
 ## [7] "Thenns"    "Tully"
 ```
 
-```r
-levels(battles$attacker_3)
-```
+Third attackers:
 
 ```
 ## [1] ""        "Giants"  "Mormont"
 ```
 
-```r
-levels(battles$attacker_4)
-```
-
+Fourth attackers:
 ```
 ## [1] ""       "Glover"
 ```
@@ -284,11 +225,7 @@ levels(battles$attacker_4)[match("",levels(battles$attacker_4))]="NotPresent"
 
 Another observation is that the House Glover is present all the times that 4 attackers participated in a battle.
 
-**Question Q5**: What are the battle with the maximum number of attackers? **Expectation E5**: Probably the battles to conquer the North. **Answer A5**: The battles were those carried on by Stannis Baratheon to free the North from the Greyjoy's and Winterfell from Bolton's. 
-
-```r
-battles[which(battles$attacker_4=="Glover"),c("name","attacker_king","defender_king","attacker_outcome","region")]
-```
+**Question Q5**: What are the battle with the maximum number of attackers? **Expectation E5**: Probably the battles to conquer the North. **Answer A5**: The battles were those carried on by Stannis Baratheon to free the North from the Greyjoy's and Winterfell from Bolton's:
 
 ```
 ##                          name     attacker_king            defender_king
@@ -301,11 +238,7 @@ battles[which(battles$attacker_4=="Glover"),c("name","attacker_king","defender_k
 
 **Observation O2**:This last battle does not have an outcome, because in the book we only know a letter send to Jon Snow by Ramsey Bolton which tells him that Stannis died, but we are not sure of the letter trustfulness. 
 
-**Question Q6**: There are other cases with missing *attacker_outcome*? **Expectation E6**: Probably not, since that is the last battle of the books until now. **Answer A6**: No, that battle is the only one. We can set the missing value to "unknown".
-
-```r
-battles[which(battles$attacker_outcome==""),c("name","attacker_king","defender_king","region")]
-```
+**Question Q6**: There are other cases with missing *attacker_outcome*? **Expectation E6**: Probably not, since that is the last battle of the books until now. **Answer A6**: No, that battle is the only one. We can set the missing value to "unknown":
 
 ```
 ##                   name     attacker_king            defender_king
@@ -319,14 +252,10 @@ levels(battles$attacker_outcome)[match("",levels(battles$attacker_outcome))]="un
 ```
 
 
-
 #### Defenders
 This variable indicates the major houses defending.
 
-```r
-levels(battles$defender_1)
-```
-
+Main defenders:
 ```
 ##  [1] ""                 "Baratheon"        "Blackwood"       
 ##  [4] "Bolton"           "Brave Companions" "Darry"           
@@ -335,26 +264,17 @@ levels(battles$defender_1)
 ## [13] "Tyrell"
 ```
 
-```r
-levels(battles$defender_2)
-```
-
+Second defenders:
 ```
 ## [1] ""          "Baratheon" "Frey"
 ```
 
-```r
-levels(battles$defender_3)
-```
-
+Third defenders:
 ```
 ## NULL
 ```
 
-```r
-levels(battles$defender_4)
-```
-
+Fourth defenders:
 ```
 ## NULL
 ```
@@ -370,11 +290,7 @@ battles$defender_4=NULL
 ```
 
 
-**Question Q7**: What does it mean a " " value on the variable *defender_1*? **Expectation E7**: A battle was fought without defenders, and probably was a razing. **Answer A7**: The battle was indeed a razing and there were nor attackers neither defender kings. We can set the missing value to the "NotPresent" one.
-
-```r
-battles[which(battles$defender_1==""),c("name","attacker_king","attacker_1","defender_king","battle_type")]
-```
+**Question Q7**: What does it mean a " " value on the variable *defender_1*? **Expectation E7**: A battle was fought without defenders, and probably was a razing. **Answer A7**: The battle was indeed a razing and there were nor attackers neither defender kings. We can set the missing value to the "NotPresent" one:
 
 ```
 ##                name attacker_king       attacker_1 defender_king
@@ -391,11 +307,7 @@ levels(battles$defender_1)[match("",levels(battles$defender_1))]="NotPresent"
 #### Attacker outcomes
 This variable indicates the outcome from the perspective of the attacker. Categories: win, loss, draw.
 
-**Question Q8**: What are the possible outcomes? **Expectation E8**: From the codebook, the possible values are "draw", "win", "loss".**Answer A8**: The values are under the expectations but no battle ended with a "draw".
-
-```r
-levels(battles$attacker_outcome)
-```
+**Question Q8**: What are the possible outcomes? **Expectation E8**: From the codebook, the possible values are "draw", "win", "loss".**Answer A8**: The values are under the expectations but no battle ended with a "draw":
 
 ```
 ## [1] "unknown" "loss"    "win"
@@ -410,21 +322,12 @@ A classification of the battle's primary type. Categories:
 - Siege: a prolonged of a forties position. 
 - Razing: an attack against an undefended position
 
-
-```r
-levels(battles$battle_type)
-```
-
 ```
 ## [1] ""               "ambush"         "pitched battle" "razing"        
 ## [5] "siege"
 ```
 
-**Question Q9**: What does it mean the value " " on the variable *battle_type*? **Expectation E9**: Probably an unknown battle type. **Answer A9**: The value is not indicated because is unknown how the battle went and its outcome, being the battle the Siege of Winterfell by Stannis Baratheon.
-
-```r
-battles[which(battles$battle_type==""),c("name","attacker_king","attacker_outcome","defender_king","battle_type")]
-```
+**Question Q9**: What does it mean the value " " on the variable *battle_type*? **Expectation E9**: Probably an unknown battle type. **Answer A9**: The value is not indicated because is unknown how the battle went and its outcome, being the battle the Siege of Winterfell by Stannis Baratheon:
 
 ```
 ##                   name     attacker_king attacker_outcome
@@ -439,11 +342,7 @@ levels(battles$battle_type)[match("",levels(battles$battle_type))]="unknown"
 
 
 #### Attacker commander
-Major commanders of the attackers. Commander's names are included without honorific titles and commanders are separated by commas. Since there are many commanders, show only the first ones.
-
-```r
-head(levels(battles$attacker_commander))
-```
+Major commanders of the attackers. Commander's names are included without honorific titles and commanders are separated by commas. Since there are many commanders, only the first are reported:
 
 ```
 ## [1] ""                                           
@@ -453,11 +352,7 @@ head(levels(battles$attacker_commander))
 ## [5] "Euron Greyjoy, Victarion Greyjoy"           
 ## [6] "Gregor Clegane"
 ```
-**Question Q10**: What does it mean the value " " on the variable *attacker_commander*? **Expectation E10**: Probably a missing or unknown commander. **Answer A10**: The value is not indicated because there wasn't a commander, being a battle led by the Brotherhood without Banners. We can set the missing value to a "NotPresent" one.
-
-```r
-battles[which(battles$attacker_commander==""),c("name","attacker_king","attacker_1","defender_king","battle_type")]
-```
+**Question Q10**: What does it mean the value " " on the variable *attacker_commander*? **Expectation E10**: Probably a missing or unknown commander. **Answer A10**: The value is not indicated because there wasn't a commander, being a battle led by the Brotherhood without Banners. We can set the missing value to a "NotPresent" one:
 
 ```
 ##                            name attacker_king                  attacker_1
@@ -472,22 +367,13 @@ levels(battles$attacker_commander)[match("",levels(battles$attacker_commander))]
 
 
 #### Defender commander
-Major commanders of the defenders. Commander's names are included without honoric titles and commanders are separated by commas. Since there are many commanders, show only the first ones.
-
-```r
-head(levels(battles$defender_commander))
-```
+Major commanders of the defenders. Commander's names are included without honoric titles and commanders are separated by commas. Since there are many commanders, only the first one are reported:
 
 ```
 ## [1] ""                 "Amory Lorch"      "Asha Greyjoy"    
 ## [4] "Beric Dondarrion" "Bran Stark"       "Brynden Tully"
 ```
-**Question Q11**: What does it mean the value " " on the variable *defender_commander*? **Expectation E11**: Probably a missing or unknown commander. **Answer A11**: The value is not indicated because there wasn't a commander, or it was unknown. In the battles where there is "NoKing" as *defender_king*, we can assume that the a *defender_commander* was not present. In the rest of the battles, which most of them are led by the Greyjoy's, probably there was a *defender_commander* but is not indicated, and thus is unknown.
-
-```r
-battles[which(battles$defender_commander==""),c("name","attacker_king","defender_king","battle_type")]
-```
-
+**Question Q11**: What does it mean the value " " on the variable *defender_commander*? **Expectation E11**: Probably a missing or unknown commander. **Answer A11**: The value is not indicated because there wasn't a commander, or it was unknown. In the battles where there is "NoKing" as *defender_king*, we can assume that the a *defender_commander* was not present. In the rest of the battles, which most of them are led by the Greyjoy's, probably there was a *defender_commander* but is not indicated, and thus is unknown:
 ```
 ##                                                    name
 ## 8                                 Battle of Moat Cailin
@@ -522,22 +408,14 @@ battles$defender_commander = droplevels(battles$defender_commander)
 
 
 #### Battles locations
-This variable represents the battle location.
-
-```r
-head(levels(battles$location))
-```
+This variable represents the battle location. Levels are:
 
 ```
 ## [1] ""               "Castle Black"   "Crag"           "Darry"         
 ## [5] "Deepwood Motte" "Dragonstone"
 ```
 
-**Question Q12**: What does it mean the value " " on the variable *location*? **Expectation E12**: Probably a missing or unknown location **Answer A12**: The location [is not known](http://awoiaf.westeros.org/index.php/Battle_at_the_burning_septry).
-
-```r
-battles[which(battles$location==""),c("name","attacker_king","defender_king")]
-```
+**Question Q12**: What does it mean the value " " on the variable *location*? **Expectation E12**: Probably a missing or unknown location **Answer A12**: The location [is not known](http://awoiaf.westeros.org/index.php/Battle_at_the_burning_septry):
 
 ```
 ##                            name attacker_king defender_king
@@ -551,11 +429,7 @@ levels(battles$location)[match("",levels(battles$location))]="unknown"
 #### Battle regions
 The region where the battle takes place. Categories: Beyond the Wall, The North, The Iron Islands, The Riverlands, The Vale of Arryn, The Westerlands, The Crownlands, The Reach, The Stormlands, Dorne
 
-**Question Q13**: What are the values assume med by the variable? **Expectation E13**: The values assumed by the variable are those described in the codebook. **Answer A13**: The answer meets the expectation, except for the regions "The Iron Islands", "The Vale of Arryn" and "Dorne", probably because no battle were fought in those regions.
-
-```r
-levels(battles$region)
-```
+**Question Q13**: What are the values assume med by the variable? **Expectation E13**: The values assumed by the variable are those described in the codebook. **Answer A13**: The answer meets the expectation, except for the regions "The Iron Islands", "The Vale of Arryn" and "Dorne", probably because no battle were fought in those regions:
 
 ```
 ## [1] "Beyond the Wall" "The Crownlands"  "The North"       "The Reach"      
@@ -571,25 +445,13 @@ This section deals with the understanding and cleaning of numerical variables in
 
 The year of the battle. We convert it to a factor variable for convenience and representation, since it assumes only $$3$$ different values.
 
-```r
-summary(battles$year)
-```
-
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   298.0   299.0   299.0   299.1   300.0   300.0
 ```
 
-```r
-battles$year=as.factor(battles$year)
-```
-
 #### Attacker size
-The size of the attacker's force. No distinction is made between the types of soldiers such as cavalry and footmen.
-
-```r
-summary(battles$attacker_size)
-```
+The size of the attacker's force. No distinction is made between the types of soldiers such as cavalry and footmen:
 
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
@@ -597,27 +459,14 @@ summary(battles$attacker_size)
 ```
 From the summary we can see that the distribution of the attacker army has a mean of about $$10000$$ soldiers , but is very scattered with many missing numbers. Particularly impressing is maximum number of $$100000$$ men.
 
-**Question Q14**: Which is the battle with $$100000$$ men? **Expectation E14**: A battle in the North with the wildlings. **Answer A14**: The battle was the assault of Castle Black by the wildlings and free folk, when Jon Snow loses Igritte. We can see that there is an error in the data, because we know that Stannis Baratheon was on the Night's side, defending the Nigth's Watch and seizing Mance Rayder. Furthermore, Stannis won the battle and Mance Rayder lost it, thus the *attacker_king* and *defender_king* variables should be swapped. The number of $$100000$$ is more meaningful now if we think of it as the army of all the freefolks, as it is also reported [here](http://awoiaf.westeros.org/index.php/Battle_of_Castle_Black).
+**Question Q14**: Which is the battle with $$100000$$ men? **Expectation E14**: A battle in the North with the wildlings. **Answer A14**: The battle was the assault of Castle Black by the wildlings and free folk, when Jon Snow loses Igritte. We can see that there is an error in the data, because we know that Stannis Baratheon was on the Night's side, defending the Nigth's Watch and seizing Mance Rayder. Furthermore, Stannis won the battle and Mance Rayder lost it, thus the *attacker_king* and *defender_king* variables should be swapped. The number of $$100000$$ is more meaningful now if we think of it as the army of all the freefolks, as it is also reported [here](http://awoiaf.westeros.org/index.php/Battle_of_Castle_Black):
 
-```r
-battles[which(battles$attacker_size==100000),c("name","attacker_king","defender_king","attacker_1","defender_1","attacker_outcome")]
-```
 
 ```
 ##                      name     attacker_king defender_king attacker_1
 ## 28 Battle of Castle Black Stannis Baratheon  Mance Rayder  Free folk
 ##       defender_1 attacker_outcome
 ## 28 Night's Watch             loss
-```
-
-```r
-tmp=battles[28,"attacker_king"]
-battles$attacker_king=as.character(battles$attacker_king)
-battles$defender_king=as.character(battles$defender_king)
-battles[28,"attacker_king"]=as.character(battles[28,"defender_king"])
-battles[28,"defender_king"]=as.character(tmp)
-battles$attacker_king=as.factor(battles$attacker_king)
-battles$defender_king=as.factor(battles$defender_king)
 ```
 
 **Question Q15**: When attacking, which battle type required more men? **Expectation E15**: Probably the *pitched battle* type, since it requires more men than ambush or a siege, which require more discretion and tools (trebuchets, rams) capability respectively. **Answer 15**: The *pitched battle* has the higher median (about $$10000$$ troops) and it is very skewed around this value, and only $$25%$$ of values are lower than $$3000$$ troops. Perhaps surprising, the median of the *ambush* distribution is similar to that of *siege*, being the latter more concentrated, indicating that there some standard number of troops to do a siege. Here we have isolated cases of ambushes with less than $$30$$ men, and a siege with $$100000$$ men (the Mance Rayder attack to Castle Black).
@@ -631,10 +480,6 @@ We Do not consider "unknown" o "razing" battles since they have few or none obse
 #### Defender size
 The size of the defender's force. No distinction is made between the types of soldiers such as cavalry and footmen.
 
-```r
-summary(battles$defender_size)
-```
-
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
 ##     100    1070    6000    6428   10000   20000      19
@@ -646,7 +491,7 @@ summary(battles$defender_size)
 
 ## More questions
 
-This section highlights and depicts more question that arise from the data.
+This section highlights and depicts more questions that arise from the data.
 
 ### Major deaths and captures rate
 
@@ -682,18 +527,9 @@ This plots shows the preferred king versus whose each king fought his battles.
 
 By inspecting the plot, it seems strange that *Balon/Euron Greyjoy* attack himself. The battle considered is the *Sack of Torrhen's Square*.  In fact, the defender king would be *Bran Stark*, since Robb is dead. I make the decision to substitute the defender king with *Robb Stark* indicating that the defenders are the Stark's. 
 
-```r
-idx_battle=battles[battles$attacker_king=="Balon/Euron Greyjoy" & battles$defender_king=="Balon/Euron Greyjoy","battle_number"]
-battles[idx_battle,c("name","attacker_king","defender_king")]
-```
-
 ```
 ##                        name       attacker_king       defender_king
 ## 13 Sack of Torrhen's Square Balon/Euron Greyjoy Balon/Euron Greyjoy
-```
-
-```r
-battles[idx_battle,"defender_king"]="Robb Stark"
 ```
 
 The correct plot is the following. We can see that Robb Stark fought mainly versus Joffrey Baratheon and viceversa. The troops without a king fought each other. Stannis fought first versus his brother Renly and then versus the Lannister's.
@@ -715,53 +551,12 @@ The plot seems to suggest that there is a linear relationship between the size o
 
 ## Graph of Thrones
 
-The following section (which owes a lot to the Kaggle's user [ColinFraser](https://www.kaggle.com/colinfraser/d/mylesoneill/game-of-thrones/battles-investigation), deals with the use of graph algorithms to analyse the social relations between houses, during the battles. By using the variables *attacker_i* and *defender_i*, with $$i=1\dots 4$$, is possible to build a graph which vertices are the house names, and an edge is present between two of them if a battle has been fought between the two houses. 
-
-
-```r
-house_figths <- battles %>% 
-  gather(attacker, attacker_house, matches('attacker_\\d')) %>%
-  gather(defender, defender_house, matches('defender_\\d')) %>% 
-  mutate(winner_house = ifelse(attacker_outcome == 'win', attacker_house, defender_house),
-         loser_house = ifelse(attacker_outcome == 'win', defender_house, attacker_house)) %>% 
-  select(loser_house, winner_house, name,battle_type,region,location,summer) %>% 
-  na.omit
-
-house_figths=filter(house_figths,winner_house!="NotPresent" & loser_house!="NotPresent")
-house_figths$region=as.character(house_figths$region)
-house_figths$name=as.character(house_figths$name)
-house_figths$location=as.character(house_figths$location)
-
-house_graph <- house_figths %>% 
-  #this order determines the direction edge
-  select( loser_house,winner_house) %>% 
-  as.matrix %>%  
-  graph_from_edgelist
-
-V(house_graph)$wins <- degree(house_graph, mode='in')
-V(house_graph)$losses <- degree(house_graph, mode='out')
-V(house_graph)$battles <- degree(house_graph, mode='all')
-E(house_graph)$weight <- 1
-E(house_graph)$battle_name <- house_figths$name
-E(house_graph)$region <- house_figths$region
-E(house_graph)$location <- house_figths$location
-
-simple_house_graph <- house_graph %>% simplify(remove.loops = F,
-                    edge.attr.comb = list(weight="sum",battle_name="concat",location="concat",region="concat"))
-```
-
+The following section (which owes a lot to the Kaggle's user [ColinFraser](https://www.kaggle.com/colinfraser/d/mylesoneill/game-of-thrones/battles-investigation)), deals with the use of graph algorithms to analyse the social relations between houses, during the battles. By using the variables *attacker_i* and *defender_i*, with $$i=1\dots 4$$, is possible to build a graph which vertices are the house names, and an edge is present between two of them if a battle has been fought between the two houses. 
 
 The direction of the edge is from a loser to a winner, and a darker edge color show how many battles are present with that edge direction (that is, with that battle outcome): the darker, the higher. It can be seen that the Frey's fought with many houses and won many battles, and how the Nigth's Watch are isolated from the rest of the world. Interestingly, even the Tyrell's fought only versus the Greyjoy's. Both the Tully's and the Stark's won more battles versus the Lannister's with respect to how many they lost versus them, but for the latter house, they are behind the Greyjoy as direct matches won. Interesting is the loop around house Baratheon, which represent the figths of Stannis versus his brother Renly.
 
 ![]({{ site.baseurl }}/images/2016-08-06-games_of_tufte/unnamed-chunk-49-1.svg)<!-- -->
 
-
-**It is possible to label the edges with battle information, but the graph became too cluttered:**
-
-- Information regarding battles names, where on each edge is indicated the name of that battle between two nodes (two houses):
-![]({{ site.baseurl }}/images/2016-08-06-games_of_tufte/unnamed-chunk-50-1.svg)<!-- -->
-- Information regarding battles locations, where on each edge is indicated the location where that battle took place:
-![]({{ site.baseurl }}/images/2016-08-06-games_of_tufte/unnamed-chunk-51-1.svg)<!-- -->
 
 
 ### Houses which won most
@@ -786,11 +581,6 @@ Adapting the reasoning to our case, we can think of it as in terms of houses and
 
 The results show that the house Frey is the most powerful, and the $$11.7%$$ of times we expect to come to House Frey having a party for their victory.
 
-
-```r
-pr <- house_graph %>% page_rank
-sort(pr$vector, decreasing=T)
-```
 
 ```
 ##                        Frey                   Lannister 
