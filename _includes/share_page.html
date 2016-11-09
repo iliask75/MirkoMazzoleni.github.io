@@ -1,9 +1,55 @@
-<!--<div class="share-page">-->
-<div class="post-date">
-  
-  Share this on &rarr;
-  
-    <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}&via={{@MazMko}}" rel="nofollow" target="_blank" title="Share on Twitter">Twitter</a> |
-    <a href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" rel="nofollow" target="_blank" title="Share on Facebook">Facebook</a> | 
-    <a href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}" rel="nofollow" target="_blank" title="Share on Google+">Google+</a>
-</div>
+
+
+<!--   <div class="sidebar-item">
+      <span>
+      <center>
+      <a href="https://github.com/{{ site.footer-links.github }}"><i class="svg-icon-share facebook"></i></a>
+
+      <span style="display:inline-block; width: 10px;"></span>
+      <a href="https://www.twitter.com/{{ site.footer-links.twitter }}"><i class="svg-icon-share twitter"></i></a>
+
+       <span style="display:inline-block; width: 10px;"></span>
+      <a href="https://www.twitter.com/{{ site.footer-links.twitter }}"><i class="svg-icon-share googleplus"></i></a>
+
+      <span style="display:inline-block; width: 10px;"></span>
+      <a href="https://www.twitter.com/{{ site.footer-links.twitter }}"><i class="svg-icon-share linkedin"></i></a>
+
+       <span style="display:inline-block; width: 10px;"></span>
+      <a href="https://www.twitter.com/{{ site.footer-links.twitter }}"><i class="svg-icon-share reddit"></i></a>
+
+
+      </center>
+    </span>
+  </div>
+ -->
+
+
+
+    <span class="share-page" style="float:right;">
+
+		<a class="svg-icon-share facebook" href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}&p[title]={{ page.title }}" rel="nofollow" target="_blank" title="Share on Facebook">
+		</a>
+
+		<span style="display:inline-block; width: 10px;"></span>
+		<a class="svg-icon-share twitter" href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}&via={{ site.footer-links.twitter }}&related={{ site.footer-links.twitter }}" title="Share on Twitter" rel="nofollow" target="_blank">
+		</a>
+
+
+	    <span style="display:inline-block; width: 10px;"></span>
+		<a class="svg-icon-share googleplus" href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}" rel="nofollow" target="_blank" title="Share on Google+">
+		</a>
+
+
+		<span style="display:inline-block; width: 10px;"></span>
+		<a class="svg-icon-share linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url }}&title={{ page.title }}&summary={{ page.description }}&source={{ site.url }}" rel="nofollow" target="_blank" title="Share on LinkedIn">
+		</a>
+
+
+		<span style="display:inline-block; width: 10px;"></span>
+		<a class="svg-icon-share reddit" href="https://www.reddit.com/submit?url={{ page.url }}&title={{ page.title }} target="_blank"" rel="nofollow" target="_blank" title="Share on Reddit">
+		</a>
+
+
+    </span>
+
+

@@ -2,13 +2,14 @@
 layout: post
 title: "A Games of Tufte - Part II"
 date: 2016-09-22
-author: mirko
+author: 
 category: Storytelling
 tags: [R, Kaggle, DataViz]
 comments: true
 ---
 
-The [first part]({% post_url 2016-08-06-game_of_tutfe_part_I %}) of the exploratory data analysis of the Games of Thrones dataset hosted at [Kaggle](https://www.kaggle.com/mylesoneill/game-of-thrones) dealed with data understanding and cleaning. This second post digs further into visualization, unveiling interesting aspect of the battles.
+
+The [first part]({% post_url 2016-08-06-game_of_tutfe %}) of the exploratory data analysis of the Games of Thrones dataset hosted at [Kaggle](https://www.kaggle.com/mylesoneill/game-of-thrones) dealed with data understanding and cleaning. This second post digs further into visualization, unveiling interesting aspect of the battles.
 
 The entire code for this post can be found  [here](https://github.com/MirkoMazzoleni/MirkoMazzoleni.github.io/blob/master/Rmarkdowns/2016-08-05-game_of_tutfe.Rmd).
 

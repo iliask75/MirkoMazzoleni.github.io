@@ -2,7 +2,7 @@
 layout: post
 title: "A Games of Tufte - Part I"
 date: 2016-08-06
-author: mirko
+author: 
 category: Storytelling
 tags: [R, Kaggle, DataViz]
 comments: true

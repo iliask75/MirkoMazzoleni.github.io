@@ -4,7 +4,9 @@ layout: default
 
 <div class="post">
   <h1 class="post-title">{{ page.title }}</h1>
-  <span class="post-date">{{ page.date | date_to_string }}</span>
+  <span class="post-date">{{ page.date | date_to_string }} 
+    {% include share_page.html %}
+  </span>
   
   {% assign author = site.data.authors[page.author] %}
   {% if author %}
@@ -12,13 +14,9 @@ layout: default
         By <a href="{{ author.web }}" target="_blank">{{ author.name }}</a>
   </span>
   {% endif %}
-  {% include share_page.html %}
-  
+
   {{ content }}
-
-  
 </div>
-
 
 
 <div class="related">
