@@ -243,22 +243,26 @@ levels(battles$attacker_outcome)[match("",levels(battles$attacker_outcome))]="un
 This variable indicates the major houses defending.
 
 Main defenders:
+
 ```
 ""   "Baratheon"  "Blackwood"  "Bolton"  "Brave Companions" "Darry"  "Greyjoy"          
      "Lannister"  "Mallister"  "Night's Watch"  "Stark"  "Tully"  "Tyrell"
 ```
 
 Second defenders:
+
 ```
 ""  "Baratheon"  "Frey"
 ```
 
 Third defenders:
+
 ```
   NULL
 ```
 
 Fourth defenders:
+
 ```
   NULL
 ```
@@ -346,6 +350,8 @@ Major commanders of the defenders. Commander's names are included without honori
 ""  "Amory Lorch"  "Asha Greyjoy"  "Beric Dondarrion"  "Bran Stark"  "Brynden Tully"
 ```
 **Question Q11**: What does it mean the value " " on the variable *defender_commander*? **Expectation E11**: Probably a missing or unknown commander. **Answer A11**: The value is not indicated because there wasn't a commander, or it was unknown. In the battles where there is "NoKing" as *defender_king*, we can assume that the a *defender_commander* was not present. In the rest of the battles, which most of them are led by the Greyjoy's, probably there was a *defender_commander* but is not indicated, and thus is unknown:
+
+
 ```           
             name                    attacker_king            defender_king           battle_type
 8   Battle of Moat Cailin          Balon/Euron Greyjoy        Robb Stark pitched         battle
