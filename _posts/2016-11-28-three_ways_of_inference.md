@@ -23,14 +23,14 @@ These disciplines entail different meanings. Respectively, they are known as:
 + The path of **Knowledge**
 + The path of **Devotion**
 
-But what does this have in common with statistical inference? In day-to-day work, the researcher faces three fundamental questions:
+But what does this have in common with statistical inference? In day-by-day work, the researcher faces three fundamental questions:
 
 + What should I **do**?
 + What’s the **relative evidence**?
 + What should I **believe**?
 
 The Path of Action gives us a guideline to act. It searches for rules to govern our behavior such that, in
-the long run, we will not be wrong too often. This is the hypothesis test framework. The well known problem with NHST (Null Hypothesis Significance Testing) is that a rule to govern our behavior in the long run, tells us nothing about the current test.
+the long run, we will not be wrong too often. This is the hypothesis testing framework. The well known problem with NHST (Null Hypothesis Significance Testing) is that a rule to govern our behavior in the long run, tells us nothing about the current test.
 
 The Path of Knowledge is based on actually observed data (which is what matters isn't it?). Standing on the concept of Likelihoods, the aim here is to compare the likelihood of different hypothesis via the likelihood ratio, given the data (and the chosen model). A discussion on the likelihood approach to inference can be found in the textbook [Statistical Evidence: A Likelihood Paradigm](https://www.amazon.com/Statistical-Evidence-Likelihood-Monographs-Probability/dp/0412044110/ref=sr_1_1?s=books&ie=UTF8&qid=1480364103&sr=1-1&keywords=Statistical+Evidence%3A+A+Likelihood+Paradigm) by Richard Royall (1997).
 
