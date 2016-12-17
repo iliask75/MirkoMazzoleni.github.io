@@ -32,6 +32,7 @@ unlikely
 
 [This article](https://www.cia.gov/library/center-for-the-study-of-intelligence/csi-publications/books-and-monographs/psychology-of-intelligence-analysis/art15.html#rft144) describes an experiment that was performed with 23 NATO military officers accustomed to reading intelligence reports. They were given a number of sentences such as: "It is highly unlikely that...": all the sentences were the same except that the verbal expressions of probability changed. The officers were asked what percentage probability they would attribute to each statement if they read it in an intelligence report. Each dot in the table represents one officer's probability assignment. While there was broad consensus about the meaning of "better than even", there was a wide disparity in interpretation of other probability expressions. The shaded areas in the table show the ranges proposed by Kent.
 
+
 ![](https://www.cia.gov/library/center-for-the-study-of-intelligence/csi-publications/books-and-monographs/psychology-of-intelligence-analysis/fig18.gif/image.gif){: .center-image }
 
 

@@ -28,6 +28,13 @@
  */
 
 
+.center-image
+{
+    margin: 0 auto;
+    display: block;
+}
+
+
 /*
  * Global resets
  *
